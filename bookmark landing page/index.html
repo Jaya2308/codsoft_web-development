@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmark Landing Page</title>
+</head>
+<body>
+    <div class="background-image">
+        <!--this section is for inserting image-->
+    </div>
+    <header>
+        <!--unicode character denoting star symbol-->
+        <h1 class="header-title" >&#9733 BOOKMARKS &#9733</h1>
+    </header>
+    <main>
+        <section class="subheading">
+            <h1>Reading List</h1>
+        </section>
+        <section class="subheading">
+            <h2>
+                <span class="folder-symbol">&#128193;</span>Mobile bookmarks
+                <!--here the above unicode character gives you folder symbol-->
+            </h2>
+            <div class="folder-content">
+                <ul>
+                    <li><a href="https://www.geeksforgeeks.org/">geeksforgeeks website</a></li>
+                    <li><a href="https://www.w3schools.com/">w3 schools</a></li>
+                    <!-- links of mobile bookmarks-->
+                </ul>
+            </div>
+        </section>
+        <section class="subheading">
+            <h2>
+                <span class="folder-symbol">&#128193;</span>Desktop bookmarks
+            </h2>
+            <div class="folder-content">
+                <ul>
+                    <li><a href="https://www.amazon.in/">Amazon</a></li>
+                    <li><a href="https://scholar.google.com/">Google scholar</a></li>
+                    <!-- and the list continues -->
+                </ul>
+            </div>
+        </section>
+    </main>
+    <div class="settings">
+        <button id="settings-button">Settings...</button>
+        <div class="settings-popup">
+            <!-- its just a sample popup -->
+        </div>
+    </div>
+    <style>
+        header {
+    background-color: #efeeee;
+    padding: 20px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+/*changes the color of the header text on hovering*/
+.header-title:hover {
+    color: #ff000d; 
+}
+.subheading {
+    font-size: 24px; 
+    color: #e4e4e4; 
+    margin-bottom: 20px; 
+}
+/*changes the colours of the links */
+a{
+    color:#f4903e;
+}
+
+.folder-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+/* properties and alignments related to background image*/
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://i.ytimg.com/vi/h_XqTUwf92Q/maxresdefault.jpg'); 
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    /* z-index is generally used to insert the images or elements one
+    over another in an order. in simple words stacking wil be queued using this*/
+}
+
+.folder-content li {
+    margin: 5px 0;
+    transition: transform 0.3s ease;
+}
+
+.folder-content li:hover {
+    transform: translateX(15px); 
+}
+#settings-button {
+    background-color: #e9d564;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;/* pointer appears on settings button*/
+    transition: transform 0.3s ease;
+    /* transitions like scaling and rotating will be applied that 
+    takes 0.3s to complete action
+    ease is like a function which is already defined for smoth transitions*/
+}
+/* settings button gets maximised on hovering*/
+#settings-button:hover {
+    transform: scale(1.1);/* with a factor of given value the element gets maximised*/
+}
+.settings{
+    position:fixed;
+    top:200px;
+    right:60px;
+}
+.settings-popup {
+    display: none;
+    position: absolute;
+    top: 0;
+    left:100%;
+    background-color: #bbe3f0;
+    color: #FFF;
+    padding: 10px;
+}
+    </style>
+    <!--now you added a line to say that you got a javascript file in this code-->
+    <script>
+        const settingsButton = document.getElementById('settings-button');
+        const settingsPopup = document.querySelector('.settings-popup');
+        settingsButton.addEventListener('click', () => {
+        settingsPopup.style.display = (settingsPopup.style.display === 'block') ? 'none' : 'block';
+});
+        const bookmarkLinks = document.querySelectorAll('.folder-content a');
+        //when the link is clicked then it will be opened in same tab//
+        bookmarkLinks.forEach((link) => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+        //prevents the link to open in new tab//
+        const targetId = link.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        //just for smooth function//
+        window.scrollTo({
+            top: targetElement.offsetTop,
+            behavior: 'smooth'
+        });
+    });
+});
+    </script>
+</body>
+</html>
