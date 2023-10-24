@@ -1,0 +1,77 @@
+
+header {
+    background-color: #efeeee;
+    padding: 20px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+/*changes the color of the header text on hovering*/
+.header-title:hover {
+    color: #ff000d; 
+}
+.subheading {
+    font-size: 24px; 
+    color: #e4e4e4; 
+    margin-bottom: 20px; 
+}
+/*changes the colours of the links */
+a{
+    color:#f4903e;
+}
+
+.folder-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+/* properties and alignments related to background image*/
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://i.ytimg.com/vi/h_XqTUwf92Q/maxresdefault.jpg'); 
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    /* z-index is generally used to insert the images or elements one
+    over another in an order. in simple words stacking wil be queued using this*/
+}
+
+.folder-content li {
+    margin: 5px 0;
+    transition: transform 0.3s ease;
+}
+
+.folder-content li:hover {
+    transform: translateX(15px); 
+}
+#settings-button {
+    background-color: #e9d564;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;/* pointer appears on settings button*/
+    transition: transform 0.3s ease;
+    /* transitions like scaling and rotating will be applied that 
+    takes 0.3s to complete action
+    ease is like a function which is already defined for smoth transitions*/
+}
+/* settings button gets maximised on hovering*/
+#settings-button:hover {
+    transform: scale(1.1);/* with a factor of given value the element gets maximised*/
+}
+.settings{
+    position:fixed;
+    top:200px;
+    right:60px;
+}
+.settings-popup {
+    display: none;
+    position: absolute;
+    top: 0;
+    left:100%;
+    background-color: #bbe3f0;
+    color: #FFF;
+    padding: 10px;
+}
